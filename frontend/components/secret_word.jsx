@@ -17,6 +17,11 @@ class SecretWord extends React.Component {
         letters.push("_");
       }
     }
+
+    let currentGuess = letters.join("");
+    this.props.checkResult(currentGuess);
+    this.props.checkRemainingGuesses();
+
     return letters.join(" ");
   }
 
