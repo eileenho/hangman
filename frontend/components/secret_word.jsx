@@ -11,7 +11,7 @@ class SecretWord extends React.Component {
     console.log(this.props.secretWord);
     let letters = [];
     for (let i = 0; i < this.props.secretWord.length; i++) {
-      if (this.props.guessedLetters.includes(this.props.secretWord[i])) {
+      if (this.props.correctLetters.includes(this.props.secretWord[i])) {
         letters.push(this.props.secretWord[i]);
       } else {
         letters.push("_");

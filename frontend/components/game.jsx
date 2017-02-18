@@ -10,6 +10,7 @@ class Game extends React.Component {
       guessesRemaining: 6,
       gameOver: false,
       guessedLetters: [],
+      correctLetters: [],
       secretWord: "",
       guess: ""
     };
@@ -39,10 +40,17 @@ class Game extends React.Component {
       guess: newGuess
     });
     if (newGuess.length == 1) {
-      this.setState({
-        guessedLetters: this.state.guessedLetters.concat(newGuess),
-        guessesRemaining: this.state.guessesRemaining - 1
-      });
+      if (this.state.secretWord.includes(newGuess)) {
+        this.setState({
+          correctLetters: this.state.correctLetters.concat(newGuess),
+          guessesRemaining: this.state.guessesRemaining - 1
+        });
+      } else {
+        this.setState({
+          guessedLetters: this.state.guessedLetters.concat(newGuess),
+          guessesRemaining: this.state.guessesRemaining - 1
+        });
+      }
     }
   }
 
@@ -52,7 +60,7 @@ class Game extends React.Component {
       <div>
         <h1>THE HANGMAN GAME</h1>
         <Guesses guessesRemaining={ this.state.guessesRemaining } guessedLetters={ this.state.guessedLetters }/>
-        <SecretWord secretWord={ this.state.secretWord } guessedLetters={ this.state.guessedLetters }/>
+        <SecretWord secretWord={ this.state.secretWord } correctLetters={ this.state.correctLetters }/>
         <GuessForm getGuess={ this.getGuess }/>
       </div>
     );
