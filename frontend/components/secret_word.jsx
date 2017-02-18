@@ -4,17 +4,13 @@ class SecretWord extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      secretWord: this.props.secretWord
-    };
-
     this.display = this.display.bind(this);
   }
 
   display() {
-    console.log(this.state.secretWord);
+    console.log(this.props.secretWord);
     return (
-      Array(this.state.secretWord.length + 1).join("_ ")
+      Array(this.props.secretWord.length + 1).join("_ ")
     );
   }
 
