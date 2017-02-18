@@ -20,7 +20,6 @@ class SecretWord extends React.Component {
 
     let currentGuess = letters.join("");
     this.props.checkResult(currentGuess);
-    this.props.checkRemainingGuesses();
 
     return letters.join(" ");
   }
