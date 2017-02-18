@@ -23,6 +23,7 @@ class Game extends React.Component {
     this.checkLetter = this.checkLetter.bind(this);
     this.checkWord = this.checkWord.bind(this);
     this.checkLastGuess = this.checkLastGuess.bind(this);
+    this.gameReset = this.gameReset.bind(this);
   }
 
   componentDidMount() {
@@ -128,6 +129,19 @@ class Game extends React.Component {
     }
   }
 
+  gameReset() {
+    this.setState({
+      guessesRemaining: 6,
+      gameOver: false,
+      guessedLetters: [],
+      correctLetters: [],
+      guessedWords: [],
+      secretWord: "secret",
+      success: false
+    });
+    this.returnWords();
+  }
+
   render() {
     return (
       <div>
@@ -139,7 +153,8 @@ class Game extends React.Component {
                     correctLetters={ this.state.correctLetters }
                     checkResult={ this.checkResult } />
         <GuessForm getGuess={ this.getGuess }/>
-        { this.state.gameOver && <GameOver success={this.state.success} /> }
+        { this.state.gameOver && <GameOver success={ this.state.success }
+                                           gameReset={ this.gameReset }/> }
       </div>
     );
   }

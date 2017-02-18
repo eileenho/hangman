@@ -20,6 +20,7 @@ class GameOver extends React.Component {
       <div>
         <h1>Game over?</h1>
         { this.endText() }
+        <button onClick={ this.props.gameReset }>Play Again!</button>
       </div>
     );
   }
