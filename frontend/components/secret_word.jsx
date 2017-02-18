@@ -9,9 +9,15 @@ class SecretWord extends React.Component {
 
   display() {
     console.log(this.props.secretWord);
-    return (
-      Array(this.props.secretWord.length + 1).join("_ ")
-    );
+    let letters = [];
+    for (let i = 0; i < this.props.secretWord.length; i++) {
+      if (this.props.guessedLetters.includes(this.props.secretWord[i])) {
+        letters.push(this.props.secretWord[i]);
+      } else {
+        letters.push("_");
+      }
+    }
+    return letters.join(" ");
   }
 
   render() {

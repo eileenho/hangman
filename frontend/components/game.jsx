@@ -52,7 +52,7 @@ class Game extends React.Component {
       <div>
         <h1>THE HANGMAN GAME</h1>
         <Guesses guessesRemaining={ this.state.guessesRemaining } guessedLetters={ this.state.guessedLetters }/>
-        <SecretWord secretWord={ this.state.secretWord }/>
+        <SecretWord secretWord={ this.state.secretWord } guessedLetters={ this.state.guessedLetters }/>
         <GuessForm getGuess={ this.getGuess }/>
       </div>
     );
