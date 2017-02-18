@@ -19,14 +19,16 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestAllWords();
+    this.props.requestAllWords().then(() => this.returnWords());
   }
 
   returnWords() {
     let words = this.props.words.words;
     if (words) {
       let secretWord = words[Math.floor(Math.random() * words.length)];
-      return <SecretWord secretWord={ secretWord }/>;
+      this.setState({
+        secretWord: secretWord
+      });
     } else {
       return <div>No words</div>;
     }
@@ -36,7 +38,12 @@ class Game extends React.Component {
     this.setState({
       guess: newGuess
     });
-    console.log(this.state.guess);
+    if (newGuess.length == 1) {
+      this.setState({
+        guessedLetters: this.state.guessedLetters.concat(newGuess),
+        guessesRemaining: this.state.guessesRemaining - 1
+      });
+    }
   }
 
   render() {
@@ -45,7 +52,7 @@ class Game extends React.Component {
       <div>
         <h1>THE HANGMAN GAME</h1>
         <Guesses guessesRemaining={ this.state.guessesRemaining } guessedLetters={ this.state.guessedLetters }/>
-        { this.returnWords() }
+        <SecretWord secretWord={ this.state.secretWord }/>
         <GuessForm getGuess={ this.getGuess }/>
       </div>
     );
