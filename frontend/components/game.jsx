@@ -10,10 +10,12 @@ class Game extends React.Component {
       guessesRemaining: 6,
       gameOver: false,
       guessedLetters: [],
-      secretWord: ""
+      secretWord: "",
+      guess: ""
     };
 
     this.returnWords = this.returnWords.bind(this);
+    this.getGuess = this.getGuess.bind(this);
   }
 
   componentDidMount() {
@@ -30,6 +32,12 @@ class Game extends React.Component {
     }
   }
 
+  getGuess(newGuess) {
+    this.setState({
+      guess: newGuess
+    });
+    console.log(this.state.guess);
+  }
 
   render() {
 
@@ -38,7 +46,7 @@ class Game extends React.Component {
         <h1>THE HANGMAN GAME</h1>
         <Guesses guessesRemaining={ this.state.guessesRemaining } guessedLetters={ this.state.guessedLetters }/>
         { this.returnWords() }
-        <GuessForm />
+        <GuessForm getGuess={ this.getGuess }/>
       </div>
     );
   }

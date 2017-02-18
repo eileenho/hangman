@@ -4,10 +4,11 @@ class GuessForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentGuess: ""
+      newGuess: ""
     };
 
-    this.checkGuess = this.checkGuess.bind(this);
+    this.handleInput = this.handleInput.bind(this);
+    this.handleOnChange = this.handleOnChange.bind(this);
   }
 
   update(field) {
@@ -16,11 +17,18 @@ class GuessForm extends React.Component {
     });
   }
 
-  checkGuess(e) {
+  handleInput(e) {
     e.preventDefault();
-    console.log("check guess");
+    this.props.getGuess(this.state.newGuess);
     this.setState({
-      currentGuess: ""
+      newGuess: ""
+    });
+  }
+
+  handleOnChange(e) {
+    e.preventDefault();
+    this.setState({
+      newGuess: e.target.value
     });
   }
 
@@ -28,10 +36,10 @@ class GuessForm extends React.Component {
     return (
       <div>
         <h2>Guess a letter or word</h2>
-        <form onSubmit={ this.checkGuess }>
+        <form onSubmit={ this.handleInput }>
           <input type="text"
-                 value={ this.state.currentGuess }
-                 onChange={ this.update("currentGuess")} />
+                 value={ this.state.newGuess }
+                 onChange={ this.handleOnChange } />
           <input type="submit" value="Guess!" />
         </form>
       </div>
