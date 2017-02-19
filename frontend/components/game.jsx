@@ -3,6 +3,7 @@ import Guesses from './guesses';
 import SecretWord from './secret_word';
 import GuessForm from './guess_form';
 import GameOver from './game_over';
+import Picture from './picture';
 
 class Game extends React.Component {
   constructor(props) {
@@ -146,6 +147,8 @@ class Game extends React.Component {
     return (
       <div>
         <h1>THE HANGMAN GAME</h1>
+        <Picture guessesRemaining={ this.state.guessesRemaining}
+                 success={ this.state.success } />
         <Guesses guessesRemaining={ this.state.guessesRemaining }
                  guessedLetters={ this.state.guessedLetters }
                  guessedWords={ this.state.guessedWords }/>
