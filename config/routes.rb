@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   end
 
   get 'api/words/random', to: 'api/words#random'
+  get 'api/words/leveled/:level', to: 'api/words#leveled'
 end

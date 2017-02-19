@@ -1,9 +1,12 @@
+// sidewalk pic url: http://res.cloudinary.com/di8mt9hbc/image/upload/v1487490178/pavers-1696507_1280_udrocc.jpg
+
 import React from 'react';
 import Guesses from './guesses';
 import SecretWord from './secret_word';
 import GuessForm from './guess_form';
 import GameOver from './game_over';
 import Picture from './picture';
+import OptionsMenu from './options_menu';
 
 class Game extends React.Component {
   constructor(props) {
@@ -16,6 +19,7 @@ class Game extends React.Component {
       guessedWords: [],
       secretWord: "secret",
       success: false,
+      level: "random"
     };
 
     this.setSecretWord = this.setSecretWord.bind(this);
@@ -25,6 +29,8 @@ class Game extends React.Component {
     this.checkWord = this.checkWord.bind(this);
     this.checkLastGuess = this.checkLastGuess.bind(this);
     this.gameReset = this.gameReset.bind(this);
+    this.setLeveledWord = this.setLeveledWord.bind(this);
+    this.setLevel = this.setLevel.bind(this);
   }
 
   componentDidMount() {
@@ -41,6 +47,21 @@ class Game extends React.Component {
       });
     } else {
       return <div>No words</div>;
+    }
+  }
+
+  setLeveledWord() {
+    this.props.requestLeveledWord(this.state.level).then(() => this.setSecretWord());
+  }
+
+  setLevel(newLevel) {
+    if (newLevel === "random") {
+      this.props.requestRandomWord().then(() => this.setSecretWord());
+    } else {
+      this.setState({
+        level: newLevel
+      });
+      this.setLeveledWord();
     }
   }
 
@@ -148,6 +169,7 @@ class Game extends React.Component {
     return (
       <div>
         <h1>THE HANGMAN GAME</h1>
+        <OptionsMenu setLevel={ this.setLevel } />
         <Picture guessesRemaining={ this.state.guessesRemaining}
                  success={ this.state.success } />
         <Guesses guessesRemaining={ this.state.guessesRemaining }
