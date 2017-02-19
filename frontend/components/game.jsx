@@ -180,7 +180,10 @@ class Game extends React.Component {
                     checkResult={ this.checkResult } />
         <GuessForm getGuess={ this.getGuess }/>
         { this.state.gameOver && <GameOver success={ this.state.success }
-                                           gameReset={ this.gameReset }/> }
+                                           gameReset={ this.gameReset }
+                                           secretWord={ this.state.secretWord }
+                                           guessesRemaining={ this.state.guessesRemaining }
+                                           createWord={ this.props.createWord }/> }
       </div>
     );
   }

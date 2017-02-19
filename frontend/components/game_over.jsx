@@ -1,4 +1,5 @@
 import React from 'react';
+import HighScoreForm from './high_score_form';
 
 class GameOver extends React.Component {
   constructor(props) {
@@ -21,6 +22,9 @@ class GameOver extends React.Component {
         <h1>Game over?</h1>
         { this.endText() }
         <button onClick={ this.props.gameReset }>Play Again!</button>
+        <HighScoreForm secretWord={ this.props.secretWord }
+                       guessesRemaining={ this.props.guessesRemaining }
+                       createWord = { this.props.createWord }/>
       </div>
     );
   }

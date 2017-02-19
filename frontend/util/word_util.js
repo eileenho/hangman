@@ -11,3 +11,11 @@ export const fetchLeveledWord = level => {
     url: `api/words/leveled/${level}.json`
   });
 };
+
+export const createWord = word => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/words',
+    data: { word }
+  });
+};

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from './game';
-import { requestRandomWord, requestLeveledWord } from '../actions/word_actions';
+import { requestRandomWord, requestLeveledWord, createWord } from '../actions/word_actions';
 
 const mapStateToProps = state => ({
   word: state.words
@@ -8,7 +8,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   requestRandomWord: () => dispatch(requestRandomWord()),
-  requestLeveledWord: level => dispatch(requestLeveledWord(level))
+  requestLeveledWord: level => dispatch(requestLeveledWord(level)),
+  createWord: word => dispatch(createWord(word))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Game);
