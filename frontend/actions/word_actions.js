@@ -1,12 +1,14 @@
 import * as WordUtil from '../util/word_util';
 
-export const RECEIVE_ALL_WORDS = "RECEIVE_ALL_WORDS";
+export const RECEIVE_RANDOM_WORD = "RECEIVE_RANDOM_WORD";
 
-export const requestAllWords = () => dispatch => (
-  WordUtil.fetchAllWords().then(words => dispatch(receiveAllWords(words)))
-);
+export const requestRandomWord = () => dispatch => {
+  return WordUtil.fetchRandomWord().then(word => {
+    dispatch(receiveRandomWord(word));
+  });
+};
 
-export const receiveAllWords = words => ({
-  type: RECEIVE_ALL_WORDS,
-  words
+export const receiveRandomWord = word => ({
+  type: RECEIVE_RANDOM_WORD,
+  word
 });

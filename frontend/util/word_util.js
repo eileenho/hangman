@@ -1,9 +1,8 @@
-export const fetchAllWords = () => (
-  $.ajax({
+export const fetchRandomWord = () => {
+  // debugger;
+  return $.ajax({
     method: 'GET',
-    url: 'http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words',
-  }).then(function(data) {
-    return data.split("\n").slice(0,100);
-  })
-
-);
+    url: 'api/words/random.json'
+  });
+}
+;

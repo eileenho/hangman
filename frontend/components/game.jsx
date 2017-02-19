@@ -18,7 +18,7 @@ class Game extends React.Component {
       success: false,
     };
 
-    this.returnWords = this.returnWords.bind(this);
+    this.setSecretWord = this.setSecretWord.bind(this);
     this.getGuess = this.getGuess.bind(this);
     this.checkResult = this.checkResult.bind(this);
     this.checkLetter = this.checkLetter.bind(this);
@@ -28,15 +28,16 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestAllWords().then(() => this.returnWords());
+    this.props.requestRandomWord().then(() => this.setSecretWord());
   }
 
-  returnWords() {
-    let words = this.props.words.words;
-    if (words) {
-      let secretWord = words[Math.floor(Math.random() * words.length)];
+  setSecretWord() {
+    console.log("setting secret word");
+    let word = this.props.word.word.word;
+    console.log(word);
+    if (word) {
       this.setState({
-        secretWord: secretWord
+        secretWord: word
       });
     } else {
       return <div>No words</div>;
