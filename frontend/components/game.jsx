@@ -183,7 +183,8 @@ class Game extends React.Component {
                                            gameReset={ this.gameReset }
                                            secretWord={ this.state.secretWord }
                                            guessesRemaining={ this.state.guessesRemaining }
-                                           createWord={ this.props.createWord }/> }
+                                           createWord={ this.props.createWord }
+                                           createScore={ this.props.createScore }/> }
       </div>
     );
   }

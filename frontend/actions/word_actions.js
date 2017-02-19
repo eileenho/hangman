@@ -3,6 +3,7 @@ import * as WordUtil from '../util/word_util';
 export const RECEIVE_RANDOM_WORD = "RECEIVE_RANDOM_WORD";
 export const RECEIVE_LEVELED_WORD = "RECEIVE_LEVELED_WORD";
 export const RECEIVE_WORD = "RECEIVE_WORD";
+export const RECEIVE_SCORE = "RECEIVE_SCORE";
 
 export const requestRandomWord = () => dispatch => {
   return WordUtil.fetchRandomWord().then(word => {
@@ -22,6 +23,12 @@ export const createWord = newWord => dispatch => {
   });
 };
 
+export const createScore = newScore => dispatch => {
+  return WordUtil.createScore(newScore).then(score => {
+    dispatch(receiveScore(score));
+  });
+};
+
 export const receiveRandomWord = word => ({
   type: RECEIVE_RANDOM_WORD,
   word
@@ -35,4 +42,9 @@ export const receiveLeveledWord = word => ({
 export const receiveWord = word => ({
   type: RECEIVE_WORD,
   word
+});
+
+export const receiveScore = score => ({
+  type: RECEIVE_SCORE,
+  score
 });

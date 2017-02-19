@@ -24,7 +24,8 @@ class GameOver extends React.Component {
         <button onClick={ this.props.gameReset }>Play Again!</button>
         <HighScoreForm secretWord={ this.props.secretWord }
                        guessesRemaining={ this.props.guessesRemaining }
-                       createWord = { this.props.createWord }/>
+                       createWord={ this.props.createWord }
+                       createScore={ this.props.createScore }/>
       </div>
     );
   }

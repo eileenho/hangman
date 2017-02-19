@@ -19,3 +19,11 @@ export const createWord = word => {
     data: { word }
   });
 };
+
+export const createScore = score => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/scores',
+    data: { score }
+  });
+};

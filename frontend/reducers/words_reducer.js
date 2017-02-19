@@ -2,7 +2,8 @@ import { merge } from 'lodash';
 
 import { RECEIVE_RANDOM_WORD,
          RECEIVE_LEVELED_WORD,
-         RECEIVE_WORD } from '../actions/word_actions';
+         RECEIVE_WORD,
+         RECEIVE_SCORE } from '../actions/word_actions';
 
 const WordsReducer = ( state = {}, action ) => {
   Object.freeze(state);
@@ -13,6 +14,8 @@ const WordsReducer = ( state = {}, action ) => {
       return merge({}, {word: action.word });
     case RECEIVE_WORD:
       return merge({}, {word: action.word });
+    case RECEIVE_SCORE:
+      return merge({}, {score: action.score});
     default:
       return state;
   }
