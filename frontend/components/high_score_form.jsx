@@ -5,7 +5,7 @@ class HighScoreForm extends React.Component {
     super(props);
     this.state = {
       playerName: "",
-      score: 6 - this.props.guessesRemaining,
+      score: this.props.totalGuesses,
       secretWord: this.props.secretWord
     };
 
@@ -20,8 +20,8 @@ class HighScoreForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createWord(this.state);
-    this.props.createScore(this.state);
+    this.props.createWord(this.state).then(()=> this.props.createScore(this.state))
+  ;
   }
 
   render() {

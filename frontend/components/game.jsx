@@ -13,6 +13,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       guessesRemaining: 6,
+      totalGuesses: 0,
       gameOver: false,
       guessedLetters: [],
       correctLetters: [],
@@ -86,11 +87,13 @@ class Game extends React.Component {
     } else if (this.state.secretWord.includes(newGuess)) {
       this.setState({
         correctLetters: this.state.correctLetters.concat(newGuess),
+        totalGuesses: this.state.totalGuesses + 1
       });
     } else {
       this.setState({
         guessedLetters: this.state.guessedLetters.concat(newGuess),
-        guessesRemaining: this.state.guessesRemaining - 1
+        guessesRemaining: this.state.guessesRemaining - 1,
+        totalGuesses: this.state.totalGuesses + 1
       });
     }
   }
@@ -102,6 +105,7 @@ class Game extends React.Component {
       } else if (this.state.secretWord.includes(newGuess)) {
         this.setState({
           correctLetters: this.state.correctLetters.concat(newGuess),
+          totalGuesses: this.state.totalGuesses + 1,
           gameOver: !this.state.gameOver,
           success: !this.state.success
         });
@@ -109,17 +113,20 @@ class Game extends React.Component {
         this.setState({
           guessedLetters: this.state.guessedLetters.concat(newGuess),
           guessesRemaining: this.state.guessesRemaining - 1,
+          totalGuesses: this.state.totalGuesses + 1,
           gameOver: !this.state.gameOver
         });
       }
     } else {
       if (newGuess === this.state.secretWord) {
         this.setState({
+          totalGuesses: this.state.totalGuesses + 1,
           gameOver: !this.state.gameOver,
           success: !this.state.success
         });
       } else {
         this.setState({
+          totalGuesses: this.state.totalGuesses + 1,
           guessedWords: this.state.guessedWords.concat(newGuess),
           guessesRemaining: this.state.guessesRemaining - 1,
           gameOver: !this.state.gameOver
@@ -131,12 +138,14 @@ class Game extends React.Component {
   checkWord(newGuess) {
     if (newGuess === this.state.secretWord) {
       this.setState({
+        totalGuesses: this.state.totalGuesses + 1,
         gameOver: !this.state.gameOver,
         success: !this.state.success
       });
     } else {
       console.log("Wrong guess");
       this.setState({
+        totalGuesses: this.state.totalGuesses + 1,
         guessedWords: this.state.guessedWords.concat(newGuess),
         guessesRemaining: this.state.guessesRemaining - 1
       });
@@ -146,6 +155,7 @@ class Game extends React.Component {
   checkResult(displayedWord) {
     if (displayedWord === this.state.secretWord) {
       this.setState({
+        totalGuesses: this.state.totalGuesses + 1,
         gameOver: !this.state.gameOver,
         success: !this.state.success
       });
@@ -155,6 +165,7 @@ class Game extends React.Component {
   gameReset() {
     this.setState({
       guessesRemaining: 6,
+      totalGuesses: 0,
       gameOver: false,
       guessedLetters: [],
       correctLetters: [],
@@ -174,7 +185,8 @@ class Game extends React.Component {
                  success={ this.state.success } />
         <Guesses guessesRemaining={ this.state.guessesRemaining }
                  guessedLetters={ this.state.guessedLetters }
-                 guessedWords={ this.state.guessedWords }/>
+                 guessedWords={ this.state.guessedWords }
+                 totalGuesses={ this.state.totalGuesses }/>
         <SecretWord secretWord={ this.state.secretWord }
                     correctLetters={ this.state.correctLetters }
                     checkResult={ this.checkResult } />
@@ -183,6 +195,7 @@ class Game extends React.Component {
                                            gameReset={ this.gameReset }
                                            secretWord={ this.state.secretWord }
                                            guessesRemaining={ this.state.guessesRemaining }
+                                           totalGuesses={ this.state.totalGuesses }
                                            createWord={ this.props.createWord }
                                            createScore={ this.props.createScore }/> }
       </div>
