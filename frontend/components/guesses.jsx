@@ -8,7 +8,7 @@ class Guesses extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="guesses-box">
         <h2>Guesses Box</h2>
         <h3>Guesses Remaining: { this.props.guessesRemaining }</h3>
         <h3>Guessed Letters: { this.props.guessedLetters }</h3>

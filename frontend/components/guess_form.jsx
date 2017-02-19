@@ -34,13 +34,12 @@ class GuessForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Guess a letter or word</h2>
+      <div className="guess-form">
         <form onSubmit={ this.handleInput }>
-          <input type="text"
+          <input className="guess-form-box" type="text"
                  value={ this.state.newGuess }
                  onChange={ this.handleOnChange } />
-          <input type="submit" value="Guess!" />
+               <input className="guess-button" type="submit" value="Guess!" />
         </form>
       </div>
     );

@@ -25,65 +25,65 @@ class Picture extends React.Component {
     switch (this.props.guessesRemaining) {
       case 6:
         return (
-          <div>
-            <img src={ catHappy } />
-            <img src={ cushion1Yellow } />
-            <img src={ cushion2Purple } />
-            <img src={ cushion3Orange } />
-            <img src={ cushion4LightBlue } />
-            <img src={ cushion5Green } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catHappy } />
+            <img className="cushion" src={ cushion1Yellow } />
+            <img className="cushion" src={ cushion2Purple } />
+            <img className="cushion" src={ cushion3Orange } />
+            <img className="cushion" src={ cushion4LightBlue } />
+            <img className="cushion" src={ cushion5Green } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 5:
         return (
-          <div>
-            <img src={ catHappyOpen } />
-            <img src={ cushion2Purple } />
-            <img src={ cushion3Orange } />
-            <img src={ cushion4LightBlue } />
-            <img src={ cushion5Green } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catHappyOpen } />
+            <img className="cushion" src={ cushion2Purple } />
+            <img className="cushion" src={ cushion3Orange } />
+            <img className="cushion" src={ cushion4LightBlue } />
+            <img className="cushion" src={ cushion5Green } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 4:
         return (
-          <div>
-            <img src={ catHappyOpen } />
-            <img src={ cushion3Orange } />
-            <img src={ cushion4LightBlue } />
-            <img src={ cushion5Green } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catHappyOpen } />
+            <img className="cushion" src={ cushion3Orange } />
+            <img className="cushion" src={ cushion4LightBlue } />
+            <img className="cushion" src={ cushion5Green } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 3:
         return (
-          <div>
-            <img src={ catMeh } />
-            <img src={ cushion4LightBlue } />
-            <img src={ cushion5Green } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catMeh } />
+            <img className="cushion" src={ cushion4LightBlue } />
+            <img className="cushion" src={ cushion5Green } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 2:
         return (
-          <div>
-            <img src={ catMeh } />
-            <img src={ cushion5Green } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catMeh } />
+            <img className="cushion" src={ cushion5Green } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 1:
         return (
-          <div>
-            <img src={ catConcerned } />
-            <img src= { cushion6Blue } />
+          <div className="picture">
+            <img className="cat" src={ catConcerned } />
+            <img className="cushion" src= { cushion6Blue } />
           </div>
         );
       case 0:
         return (
-          <div>
-            <img src={ catSad } />
+          <div className="picture">
+            <img className="cat" src={ catSad } />
           </div>
         );
       default:

@@ -18,9 +18,11 @@ class Api::WordsController < ApplicationController
     result = Net::HTTP.get(URI.parse('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words'))
     @words = result.split("\n")
     @word = @words.sample
+    @saved_word = Word.find_or_create_by(word: @word)
+    @scores = @saved_word.scores
     respond_to do |format|
       format.json {
-        render :random, { word: @word }
+        render :random, { word: @word , scores: @scores}
       }
     end
   end
@@ -30,9 +32,12 @@ class Api::WordsController < ApplicationController
     result = Net::HTTP.get(URI.parse("http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words?difficulty=#{level}"))
     @words = result.split("\n")
     @word = @words.sample
+    @saved_word = Word.find_or_create_by(word: @word)
+    @scores = @saved_word.scores
+    @scores = @word.scores
     respond_to do |format|
       format.json {
-        render :leveled, { word: @word }
+        render :leveled, { word: @word, scores: @scores }
       }
     end
   end

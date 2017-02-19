@@ -20,15 +20,18 @@ class SecretWord extends React.Component {
 
     let currentGuess = letters.join("");
     this.props.checkResult(currentGuess);
-
-    return letters.join(" ");
+    let i = 0;
+    return (
+      <ul className="secret-word-letters">
+        {letters.map(letter => <li key={i++}>{letter}</li>)}
+      </ul>
+    );
   }
 
   render() {
     return (
       <div>
-        <h3>Secret Word:</h3>
-        { this.display() }
+        <div>{ this.display() }</div>
       </div>
     );
   }

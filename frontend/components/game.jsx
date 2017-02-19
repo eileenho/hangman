@@ -41,7 +41,9 @@ class Game extends React.Component {
   setSecretWord() {
     console.log("setting secret word");
     let word = this.props.word.word.word;
+    let scores = this.props.word.word.scores;
     console.log(word);
+    console.log(scores);
     if (word) {
       this.setState({
         secretWord: word
@@ -178,26 +180,35 @@ class Game extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>THE HANGMAN GAME</h1>
-        <OptionsMenu setLevel={ this.setLevel } />
-        <Picture guessesRemaining={ this.state.guessesRemaining}
-                 success={ this.state.success } />
-        <Guesses guessesRemaining={ this.state.guessesRemaining }
-                 guessedLetters={ this.state.guessedLetters }
-                 guessedWords={ this.state.guessedWords }
-                 totalGuesses={ this.state.totalGuesses }/>
-        <SecretWord secretWord={ this.state.secretWord }
-                    correctLetters={ this.state.correctLetters }
-                    checkResult={ this.checkResult } />
-        <GuessForm getGuess={ this.getGuess }/>
+      <div className="game-container">
+        <h1 className="title">HANGMAN</h1>
+        <div className="top-container">
+          <OptionsMenu setLevel={ this.setLevel }
+            level={ this.state.level }/>
+          <div className="picture-container">
+            <Picture guessesRemaining={ this.state.guessesRemaining}
+              success={ this.state.success } />
+            <SecretWord secretWord={ this.state.secretWord }
+              correctLetters={ this.state.correctLetters }
+              checkResult={ this.checkResult } />
+            <GuessForm getGuess={ this.getGuess }/>
+          </div>
+          <div className="side-bar-container">
+            <Guesses guessesRemaining={ this.state.guessesRemaining }
+              guessedLetters={ this.state.guessedLetters }
+              guessedWords={ this.state.guessedWords }
+              totalGuesses={ this.state.totalGuesses }/>
+          </div>
+        </div>
+        <div className="bottom-container">
+        </div>
         { this.state.gameOver && <GameOver success={ this.state.success }
-                                           gameReset={ this.gameReset }
-                                           secretWord={ this.state.secretWord }
-                                           guessesRemaining={ this.state.guessesRemaining }
-                                           totalGuesses={ this.state.totalGuesses }
-                                           createWord={ this.props.createWord }
-                                           createScore={ this.props.createScore }/> }
+        gameReset={ this.gameReset }
+        secretWord={ this.state.secretWord }
+        guessesRemaining={ this.state.guessesRemaining }
+        totalGuesses={ this.state.totalGuesses }
+        createWord={ this.props.createWord }
+        createScore={ this.props.createScore }/> }
       </div>
     );
   }
