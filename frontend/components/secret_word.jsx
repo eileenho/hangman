@@ -19,7 +19,10 @@ class SecretWord extends React.Component {
     }
 
     let currentGuess = letters.join("");
-    this.props.checkResult(currentGuess);
+    if (this.props.gameOver === false ) {
+      this.props.checkResult(currentGuess);
+    }
+    
     let i = 0;
     return (
       <ul className="secret-word-letters">

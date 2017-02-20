@@ -21,7 +21,7 @@ class Picture extends React.Component {
     let cushion4LightBlue = "http://res.cloudinary.com/di8mt9hbc/image/upload/v1487464912/lightbluecushion_hnrrkq.png";
     let cushion5Green = "http://res.cloudinary.com/di8mt9hbc/image/upload/v1487464912/greencushion_hyz3dv.png";
     let cushion6Blue = "http://res.cloudinary.com/di8mt9hbc/image/upload/v1487464898/bluecushion_ypx4pj.png";
-
+    
     switch (this.props.guessesRemaining) {
       case 6:
         return (

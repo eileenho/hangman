@@ -7,6 +7,7 @@ import GuessForm from './guess_form';
 import GameOver from './game_over';
 import Picture from './picture';
 import OptionsMenu from './options_menu';
+import Score from './score.jsx';
 
 class Game extends React.Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class Game extends React.Component {
       guessedWords: [],
       secretWord: "secret",
       success: false,
-      level: "random"
+      level: "random",
+      scores: ""
     };
 
     this.setSecretWord = this.setSecretWord.bind(this);
@@ -46,7 +48,8 @@ class Game extends React.Component {
     console.log(scores);
     if (word) {
       this.setState({
-        secretWord: word
+        secretWord: word,
+        scores: scores
       });
     } else {
       return <div>No words</div>;
@@ -175,7 +178,6 @@ class Game extends React.Component {
       secretWord: "secret",
       success: false
     });
-    this.returnWords();
   }
 
   render() {
@@ -183,21 +185,23 @@ class Game extends React.Component {
       <div className="game-container">
         <h1 className="title">HANGMAN</h1>
         <div className="top-container">
-          <OptionsMenu setLevel={ this.setLevel }
-            level={ this.state.level }/>
+          <OptionsMenu setLevel={ this.setLevel } />
           <div className="picture-container">
             <Picture guessesRemaining={ this.state.guessesRemaining}
               success={ this.state.success } />
             <SecretWord secretWord={ this.state.secretWord }
               correctLetters={ this.state.correctLetters }
-              checkResult={ this.checkResult } />
+              checkResult={ this.checkResult }
+              gameOver={ this.state.gameOver } />
             <GuessForm getGuess={ this.getGuess }/>
           </div>
           <div className="side-bar-container">
             <Guesses guessesRemaining={ this.state.guessesRemaining }
               guessedLetters={ this.state.guessedLetters }
               guessedWords={ this.state.guessedWords }
-              totalGuesses={ this.state.totalGuesses }/>
+              totalGuesses={ this.state.totalGuesses }
+              level= { this.state.level }/>
+            <Score scores={ this.state.scores }/>
           </div>
         </div>
         <div className="bottom-container">

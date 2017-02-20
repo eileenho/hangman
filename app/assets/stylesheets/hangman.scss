@@ -11,9 +11,7 @@
 .picture {
   display: flex;
   flex-direction: column;
-  width: 600px;
   align-items: center;
-  // background-image: url('http://res.cloudinary.com/di8mt9hbc/image/upload/v1487490178/pavers-1696507_1280_udrocc.jpg');
 }
 
 .picture-container {
@@ -23,6 +21,11 @@
   justify-content: flex-end;
   border: 1px solid black;
   border-radius: 5px;
+  width: 600px;
+  height: 600px;
+  background-image: url('http://res.cloudinary.com/di8mt9hbc/image/upload/v1487607515/sunlightbackgroundsquare_sv0wrd.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .side-bar-container {
