@@ -178,6 +178,7 @@ class Game extends React.Component {
       secretWord: "secret",
       success: false
     });
+    this.props.requestRandomWord().then(() => this.setSecretWord());
   }
 
   render() {

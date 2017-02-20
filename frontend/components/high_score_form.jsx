@@ -26,12 +26,12 @@ class HighScoreForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={ this.handleSubmit }>
-      <input type="text"
-             value={ this.state.playerName }
-             onChange={ this.update("playerName") } />
-      <input type="submit" value="Save Score"></input>
-    </form>
+      <form className="high-score-form" onSubmit={ this.handleSubmit }>
+        <input type="text"
+               value={ this.state.playerName }
+               onChange={ this.update("playerName") } />
+        <input type="submit" value="Save Score"></input>
+      </form>
     );
   }
 

@@ -1,3 +1,12 @@
+html, body {
+  min-height: 100%;
+  font-family: 'Sniglet', cursive;
+}
+
+body {
+  position: relative;
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -99,9 +108,6 @@
   }
 }
 
-.guess-form {
-}
-
 .guess-form-box {
   font-size: 24px;
   height: 30px;
@@ -118,5 +124,31 @@
   &:hover {
     cursor: pointer
   }
+}
 
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}
+
+.end-game-box {
+  margin-top: 150px;
+  width: 400px;
+  height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+
+  img {
+    width: 100px;
+  }
 }
