@@ -149,7 +149,13 @@ body {
   border-radius: 5px;
   padding: 5px;
   margin: 5px;
+  background-color: #7bc950;
+  width: 200px;
+}
+
+.top-scores {
   background-color: white;
+  border-radius: 5px;
 }
 
 .guess-form-box {
@@ -195,5 +201,32 @@ body {
 
   img {
     width: 100px;
+  }
+}
+
+.secret-word {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding: 5px;
+  }
+
+  li {
+    font-size: 16px;
+    height: 20px;
+    width: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 2px;
+    text-align: center;
+    background-color: #f1d302;
+    color: #f1d302;
+    box-shadow: 0 0 5px black;
   }
 }

@@ -189,31 +189,32 @@ class Game extends React.Component {
           <OptionsMenu setLevel={ this.setLevel } />
           <div className="board-container">
             <Guesses guessesRemaining={ this.state.guessesRemaining }
-              guessedLetters={ this.state.guessedLetters }
-              guessedWords={ this.state.guessedWords }
-              totalGuesses={ this.state.totalGuesses }
-              level= { this.state.level }/>
+                     guessedLetters={ this.state.guessedLetters }
+                     guessedWords={ this.state.guessedWords }
+                     totalGuesses={ this.state.totalGuesses }
+                     level= { this.state.level }/>
             <div className="picture-container">
               <Picture guessesRemaining={ this.state.guessesRemaining}
-                success={ this.state.success } />
+                       success={ this.state.success } />
               <SecretWord secretWord={ this.state.secretWord }
-                correctLetters={ this.state.correctLetters }
-                checkResult={ this.checkResult }
-                gameOver={ this.state.gameOver } />
+                          correctLetters={ this.state.correctLetters }
+                          checkResult={ this.checkResult }
+                          gameOver={ this.state.gameOver } />
               <GuessForm getGuess={ this.getGuess }/>
             </div>
           </div>
           <div className="side-bar-container">
-            <Score scores={ this.state.scores }/>
+            <Score scores={ this.state.scores }
+                   secretWord={ this.state.secretWord }/>
           </div>
         </div>
         { this.state.gameOver && <GameOver success={ this.state.success }
-        gameReset={ this.gameReset }
-        secretWord={ this.state.secretWord }
-        guessesRemaining={ this.state.guessesRemaining }
-        totalGuesses={ this.state.totalGuesses }
-        createWord={ this.props.createWord }
-        createScore={ this.props.createScore }/> }
+                                           gameReset={ this.gameReset }
+                                           secretWord={ this.state.secretWord }
+                                           guessesRemaining={ this.state.guessesRemaining }
+                                           totalGuesses={ this.state.totalGuesses }
+                                           createWord={ this.props.createWord }
+                                           createScore={ this.props.createScore }/> }
       </div>
     );
   }

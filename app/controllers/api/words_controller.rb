@@ -17,7 +17,7 @@ class Api::WordsController < ApplicationController
   def random
     result = Net::HTTP.get(URI.parse('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words'))
     @words = result.split("\n")
-    @word = @words.sample
+    @word = @words[0..10].sample
     @saved_word = Word.find_or_create_by(word: @word)
     @scores = @saved_word.scores
     respond_to do |format|

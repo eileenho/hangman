@@ -4,36 +4,61 @@ class Score extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      scoresTotal: 0
-    };
-
+    this.secretWordDisplay = this.secretWordDisplay.bind(this);
     this.scoresAverage = this.scoresAverage.bind(this);
+    this.showScores = this.showScores.bind(this);
+  }
+
+  secretWordDisplay() {
+    let letters = [];
+    for (let i = 0; i < this.props.secretWord.length; i++) {
+      letters.push("_");
+    }
+    let i = 0;
+    return (
+      <ul>
+        {letters.map(letter => <li key={i++}>{ letter }</li> )}
+      </ul>
+    );
   }
 
   scoresAverage() {
-    if (this.props.scores) {
-      this.props.scores.map(score => this.setState({ scoresTotal: this.state.scoresTotal + score}));
-      let average = this.state.scoresTotal/this.props.scores.length;
+    if (this.props.scores.length < 1) {
+      return <div>N/A</div>;
+    } else {
+      let scoresArray = [];
+      this.props.scores.map(score => scoresArray.push(score.score));
+      let scoresTotal = scoresArray.reduce((a, b) => a + b, 0);
+      let average = scoresTotal/this.props.scores.length;
       return (
         <div>{ average }</div>
       );
-    } else {
-      return <div></div>;
+    }
+  }
+
+  showScores() {
+    if (this.props.scores) {
+      return (
+        this.props.scores.map(score => <li key={score.id}>{score.player_name} : {score.score}</li>)
+      );
     }
   }
 
   render() {
     return (
       <div className="scores">
-        <h1>Average number of guesses: 0</h1>
-        <h1>Top Scores</h1>
-        <ol>
-          <li>Victor: 0 </li>
-          <li>Gina: 0 </li>
-          <li>Heather: 1</li>
-        </ol>
-        { this.scoresAverage() }
+        <div className="secret-word">
+            { this.secretWordDisplay() }
+        </div>
+        <div className="average-scores">
+          Average number of guesses:<br />
+          { this.scoresAverage() }
+        </div>
+        <div className="top-scores">
+          <ol>
+            { this.showScores() }
+          </ol>
+        </div>
       </div>
     );
   }
