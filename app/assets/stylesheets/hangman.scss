@@ -1,6 +1,7 @@
 html, body {
   min-height: 100%;
   font-family: 'Sniglet', cursive;
+  background-color: #adf5ff;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   flex-direction: column;
 }
 
-.top-container {
+.main-container {
   display: flex;
   flex-direction: row nowrap;
 }
@@ -28,13 +29,20 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  border: 1px solid black;
   border-radius: 5px;
-  width: 600px;
-  height: 600px;
-  background-image: url('http://res.cloudinary.com/di8mt9hbc/image/upload/v1487607515/sunlightbackgroundsquare_sv0wrd.png');
+  width: 650px;
+  height: 450px;
+  background-image: url('http://res.cloudinary.com/di8mt9hbc/image/upload/v1487634982/hangmanbackground3_oabzfe.png');
+  // background-image: url('http://res.cloudinary.com/di8mt9hbc/image/upload/v1487561031/sunlightbackground_j7ulc2.png');
   background-size: cover;
   background-position: center;
+  border: 3px solid #670000;
+  margin: 5px;
+}
+
+.board-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .side-bar-container {
@@ -42,26 +50,22 @@ body {
   flex-direction: column;
 }
 
-.bottom-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .cat {
-  width: 200px;
-  margin-bottom: -30px;
+  width: 150px;
+  margin-bottom: -20px;
   z-index: 1;
 }
 
 .cushion {
-  width: 200px;
-  margin-bottom: -5px;
+  width: 150px;
+  margin-bottom: -3px;
 }
 
 .secret-word-letters {
   display: flex;
   flex-direction: row;
   list-style: none;
+  padding: 5px;
 
   li {
     font-size: 36px;
@@ -77,14 +81,37 @@ body {
 }
 
 .title {
-  font-size: 36px;
+  font-size: 32px;
   text-align: center;
+  padding: 10px;
 }
 
 .guesses-box {
-  border: 1px solid black;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
+  font-size: 16px;
+  font-color: #670000;
+  width: 650px;
+  border: 3px solid #670000;
+}
+
+.top-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 650px;
+}
+
+.bottow-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 650px;
 }
 
 .options-menu {
@@ -92,20 +119,37 @@ body {
   flex-direction: column;
   align-items: center;
   font-size: 16px;
+  border: 3px solid #670000;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  background-color: #faa613;
 
   button {
     font-size: 16px;
+    font-family: 'Sniglet', cursive;
     padding: 5px;
     border-radius: 5px;
-    background-color: #72b73a;
-    margin: 1px;
+    background-color: white;
+    margin: 3px;
     width: 100px;
+    border: 2px solid black;
 
     &:hover {
       cursor: pointer;
-      background-color: #acd58b;
+      color: white;
+      background-color: #670000;
     }
   }
+}
+
+.scores {
+  border: 3px solid #670000;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  background-color: white;
 }
 
 .guess-form-box {
@@ -120,6 +164,7 @@ body {
   padding: 5px;
   border-radius: 5px;
   margin: 5px;
+  font-family: 'Sniglet', cursive;
 
   &:hover {
     cursor: pointer

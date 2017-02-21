@@ -22,7 +22,7 @@ class OptionsMenu extends React.Component {
   render() {
     return (
       <div className="options-menu">
-        <h3>Choose a Level:</h3>
+        <div>Choose a Level:</div>
         <button onClick={ this.handleClick } value="random">Random</button>
         <button onClick={ this.handleClick } value="1">1</button>
         <button onClick={ this.handleClick } value="2">2</button>

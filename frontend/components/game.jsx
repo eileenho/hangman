@@ -184,28 +184,28 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game-container">
-        <h1 className="title">HANGMAN</h1>
-        <div className="top-container">
+        <div className="title">Comfy Cat (a.k.a Hangman)</div>
+        <div className="main-container">
           <OptionsMenu setLevel={ this.setLevel } />
-          <div className="picture-container">
-            <Picture guessesRemaining={ this.state.guessesRemaining}
-              success={ this.state.success } />
-            <SecretWord secretWord={ this.state.secretWord }
-              correctLetters={ this.state.correctLetters }
-              checkResult={ this.checkResult }
-              gameOver={ this.state.gameOver } />
-            <GuessForm getGuess={ this.getGuess }/>
-          </div>
-          <div className="side-bar-container">
+          <div className="board-container">
             <Guesses guessesRemaining={ this.state.guessesRemaining }
               guessedLetters={ this.state.guessedLetters }
               guessedWords={ this.state.guessedWords }
               totalGuesses={ this.state.totalGuesses }
               level= { this.state.level }/>
+            <div className="picture-container">
+              <Picture guessesRemaining={ this.state.guessesRemaining}
+                success={ this.state.success } />
+              <SecretWord secretWord={ this.state.secretWord }
+                correctLetters={ this.state.correctLetters }
+                checkResult={ this.checkResult }
+                gameOver={ this.state.gameOver } />
+              <GuessForm getGuess={ this.getGuess }/>
+            </div>
+          </div>
+          <div className="side-bar-container">
             <Score scores={ this.state.scores }/>
           </div>
-        </div>
-        <div className="bottom-container">
         </div>
         { this.state.gameOver && <GameOver success={ this.state.success }
         gameReset={ this.gameReset }

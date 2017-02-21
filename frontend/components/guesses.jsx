@@ -9,11 +9,15 @@ class Guesses extends React.Component {
   render() {
     return (
       <div className="guesses-box">
-        <h3>Current Level: { this.props.level }</h3>
-        <h3>Guesses Remaining: { this.props.guessesRemaining }</h3>
-        <h3>Guessed Letters: { this.props.guessedLetters }</h3>
-        <h3>Guessed Words: { this.props.guessedWords }</h3>
-        <h3>Number of Guesses (Score): { this.props.totalGuesses }</h3>
+        <div className="top-row">
+          <div>Level: { this.props.level }</div>
+          <div>Guesses Left: { this.props.guessesRemaining }</div>
+          <div>Total Guesses: { this.props.totalGuesses }</div>
+        </div>
+        <div className="bottom-row">
+          <div>Guessed Letters: { this.props.guessedLetters }</div>
+          <div>Guessed Words: { this.props.guessedWords }</div>
+        </div>
       </div>
     );
   }

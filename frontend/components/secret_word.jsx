@@ -22,12 +22,12 @@ class SecretWord extends React.Component {
     if (this.props.gameOver === false ) {
       this.props.checkResult(currentGuess);
     }
-    
+
     let i = 0;
     return (
-      <ul className="secret-word-letters">
+      <div className="secret-word-letters">
         {letters.map(letter => <li key={i++}>{letter}</li>)}
-      </ul>
+      </div>
     );
   }
 
