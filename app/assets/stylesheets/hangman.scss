@@ -85,34 +85,6 @@ body {
   padding: 10px;
 }
 
-.guesses-box {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  align-self: flex-start;
-  border-radius: 5px;
-  padding: 5px;
-  margin: 5px;
-  font-size: 16px;
-  font-color: #670000;
-  width: 650px;
-  border: 3px solid #670000;
-}
-
-.top-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 650px;
-}
-
-.bottow-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  width: 650px;
-}
-
 .options-menu {
   display: flex;
   flex-direction: column;

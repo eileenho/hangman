@@ -191,8 +191,7 @@ class Game extends React.Component {
             <Guesses guessesRemaining={ this.state.guessesRemaining }
                      guessedLetters={ this.state.guessedLetters }
                      guessedWords={ this.state.guessedWords }
-                     totalGuesses={ this.state.totalGuesses }
-                     level= { this.state.level }/>
+                     totalGuesses={ this.state.totalGuesses } />
             <div className="picture-container">
               <Picture guessesRemaining={ this.state.guessesRemaining}
                        success={ this.state.success } />
