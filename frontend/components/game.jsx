@@ -205,7 +205,7 @@ class Game extends React.Component {
           </div>
           <div className="side-bar-container">
             <Score scores={ this.state.scores }
-                   secretWord={ this.state.secretWord }/>
+              level={ this.state.level }/>
           </div>
         </div>
         { this.state.gameOver && <GameOver success={ this.state.success }
