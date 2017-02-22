@@ -20,8 +20,7 @@ class HighScoreForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createWord(this.state).then(()=> this.props.createScore(this.state))
-  ;
+    this.props.createWord(this.state).then(()=> this.props.createScore(this.state)).then(()=> this.props.gameReset());
   }
 
   render() {
@@ -30,7 +29,7 @@ class HighScoreForm extends React.Component {
         <input type="text"
                value={ this.state.playerName }
                onChange={ this.update("playerName") } />
-        <input type="submit" value="Save Score"></input>
+             <input className="score-submit-button" type="submit" value="Save Score"></input>
       </form>
     );
   }

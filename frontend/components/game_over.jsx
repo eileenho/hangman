@@ -19,11 +19,12 @@ class GameOver extends React.Component {
           <h1>You Win!</h1>
           <h2>You correctly guessed: { this.props.secretWord }</h2>
           <h3>You made { this.props.totalGuesses } guess(es).</h3>
-          <h2>Add your score:</h2>
+          <h2>Enter your name:</h2>
           <HighScoreForm secretWord={ this.props.secretWord }
             totalGuesses={ this.props.totalGuesses }
             createWord={ this.props.createWord }
-            createScore={ this.props.createScore }/>
+            createScore={ this.props.createScore }
+            gameReset={ this.props.gameReset }/>
         </div>
       );
     } else {

@@ -1,0 +1,68 @@
+.end-game-box {
+  margin-top: 100px;
+  width: 400px;
+  height: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+
+  h1 {
+    font-size: 28px;
+    margin: 5px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  img {
+    width: 100px;
+  }
+}
+
+.high-score-form {
+  input {
+    height: 30px;
+    padding: 0px 6px;
+    width: 200px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+}
+
+.score-submit-button {
+  font-family: 'Sniglet', cursive;
+  margin: 3px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ff3038;
+    color: white;
+  }
+}
+
+.reset-button {
+  font-family: 'Sniglet', cursive;
+  font-size: 16px;
+  height: 30px;
+  width: 200px;
+  padding: 5px;
+  margin: 3px;
+  border: 2px solid #670000;
+  border-radius: 5px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #ff3038;
+    color: white;
+  }
+}
