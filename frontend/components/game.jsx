@@ -110,7 +110,6 @@ class Game extends React.Component {
       } else if (this.state.secretWord.includes(newGuess)) {
         this.setState({
           correctLetters: this.state.correctLetters.concat(newGuess),
-          totalGuesses: this.state.totalGuesses + 1,
           gameOver: !this.state.gameOver,
           success: !this.state.success
         });
@@ -160,7 +159,6 @@ class Game extends React.Component {
   checkResult(displayedWord) {
     if (displayedWord === this.state.secretWord) {
       this.setState({
-        totalGuesses: this.state.totalGuesses + 1,
         gameOver: !this.state.gameOver,
         success: !this.state.success
       });
