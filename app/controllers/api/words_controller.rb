@@ -19,7 +19,7 @@ class Api::WordsController < ApplicationController
     @words = result.split("\n")
     @word = @words[0..10].sample
     @saved_word = Word.find_or_create_by(word: @word)
-    @scores = @saved_word.scores
+    @scores = @saved_word.scores.order('score')
     respond_to do |format|
       format.json {
         render :random, { word: @word , scores: @scores}
