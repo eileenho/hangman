@@ -27,7 +27,7 @@ class Guesses extends React.Component {
       <div className="guesses-box">
         <div className="left-guessed-box">
           <div className="left-guessed-list">
-            <div className="guesses-titles">Guessed Letters:</div>
+            <div className="guesses-titles">Missed Letters:</div>
             <div className="guessed-list">{ this.showGuessedLetters() }</div>
           </div>
           <div className="left-guessed-list">

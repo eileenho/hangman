@@ -30,7 +30,7 @@ class Score extends React.Component {
   }
 
   showScores() {
-    if (this.props.scores) {
+    if (this.props.scores.length > 0) {
       return (
         this.props.scores.map(score => <li key={score.id}>{score.player_name} : {score.score} guesses</li>)
       );
@@ -62,8 +62,6 @@ class Score extends React.Component {
       </div>
     );
   }
-
-
 }
 
 export default Score;

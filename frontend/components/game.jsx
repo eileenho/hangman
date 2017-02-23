@@ -1,6 +1,6 @@
-// sidewalk pic url: http://res.cloudinary.com/di8mt9hbc/image/upload/v1487490178/pavers-1696507_1280_udrocc.jpg
-
 import React from 'react';
+import { merge } from 'lodash';
+
 import Guesses from './guesses';
 import SecretWord from './secret_word';
 import GuessForm from './guess_form';
@@ -22,30 +22,31 @@ class Game extends React.Component {
       secretWord: "secret",
       success: false,
       level: "random",
-      scores: ""
+      scores: "",
+      currentGuess: []
     };
 
     this.setSecretWord = this.setSecretWord.bind(this);
     this.getGuess = this.getGuess.bind(this);
-    this.checkResult = this.checkResult.bind(this);
     this.checkLetter = this.checkLetter.bind(this);
     this.checkWord = this.checkWord.bind(this);
     this.checkLastGuess = this.checkLastGuess.bind(this);
     this.gameReset = this.gameReset.bind(this);
     this.setLeveledWord = this.setLeveledWord.bind(this);
     this.setLevel = this.setLevel.bind(this);
+    this.setCurrentGuess = this.setCurrentGuess.bind(this);
+    this.updateCurrentGuess = this.updateCurrentGuess.bind(this);
+    this.checkGuess = this.checkGuess.bind(this);
   }
 
   componentDidMount() {
-    this.props.requestRandomWord().then(() => this.setSecretWord());
+    this.props.requestRandomWord().then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
   }
 
   setSecretWord() {
-    console.log("setting secret word");
     let word = this.props.word.word.word;
     let scores = this.props.word.word.scores;
     console.log(word);
-    console.log(scores);
     if (word) {
       this.setState({
         secretWord: word,
@@ -57,7 +58,17 @@ class Game extends React.Component {
   }
 
   setLeveledWord() {
-    this.props.requestLeveledWord(this.state.level).then(() => this.setSecretWord());
+    this.props.requestLeveledWord(this.state.level).then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
+  }
+
+  setCurrentGuess() {
+    let blankCurrentGuess = [];
+    for (let i = 0; i < this.state.secretWord.length; i++) {
+      blankCurrentGuess.push("_");
+    }
+    this.setState({
+      currentGuess: blankCurrentGuess
+    });
   }
 
   setLevel(newLevel) {
@@ -83,7 +94,39 @@ class Game extends React.Component {
         this.checkLastGuess(newGuess);
       }
     }
+  }
 
+  updateCurrentGuess(letter) {
+    let newCurrentGuess = [];
+    let secretWordLetters = this.state.secretWord.split("");
+    secretWordLetters.map((x, i) => {
+      if (this.state.currentGuess[i] === "_") {
+        if (secretWordLetters[i] === letter) {
+          newCurrentGuess.push(letter);
+        } else {
+          newCurrentGuess.push("_");
+        }
+      } else {
+        newCurrentGuess.push(secretWordLetters[i]);
+      }
+    });
+    this.setState({
+      currentGuess: newCurrentGuess
+    }, this.checkGuess);
+    console.log(newCurrentGuess);
+  }
+
+  checkGuess() {
+    console.log("checking guess");
+    let currentGuessWord = this.state.currentGuess.join("");
+    console.log(currentGuessWord);
+    if (currentGuessWord === this.state.secretWord) {
+      this.setState({
+        gameOver: !this.state.gameOver,
+        success: !this.state.success
+      });
+      console.log(this.state.currentGuess);
+    }
   }
 
   checkLetter(newGuess) {
@@ -94,6 +137,7 @@ class Game extends React.Component {
         correctLetters: this.state.correctLetters.concat(newGuess),
         totalGuesses: this.state.totalGuesses + 1
       });
+      this.updateCurrentGuess(newGuess);
     } else {
       this.setState({
         guessedLetters: this.state.guessedLetters.concat(newGuess),
@@ -104,6 +148,7 @@ class Game extends React.Component {
   }
 
   checkLastGuess(newGuess) {
+    console.log("check last guess");
     if (newGuess.length === 1) {
       if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
         console.log("You've already guessed this letter!");
@@ -140,6 +185,7 @@ class Game extends React.Component {
   }
 
   checkWord(newGuess) {
+    console.log("check Word");
     if (newGuess === this.state.secretWord) {
       this.setState({
         totalGuesses: this.state.totalGuesses + 1,
@@ -152,15 +198,6 @@ class Game extends React.Component {
         totalGuesses: this.state.totalGuesses + 1,
         guessedWords: this.state.guessedWords.concat(newGuess),
         guessesRemaining: this.state.guessesRemaining - 1
-      });
-    }
-  }
-
-  checkResult(displayedWord) {
-    if (displayedWord === this.state.secretWord) {
-      this.setState({
-        gameOver: !this.state.gameOver,
-        success: !this.state.success
       });
     }
   }
@@ -182,7 +219,7 @@ class Game extends React.Component {
   render() {
     return (
       <div className="game-container">
-        <div className="title">Comfy Cat (a.k.a Hangman)</div>
+        <div className="title">Comfy Cat (a.k.a. Hangman)</div>
         <div className="main-container">
           <OptionsMenu setLevel={ this.setLevel } />
           <div className="board-container">
@@ -195,7 +232,6 @@ class Game extends React.Component {
                        success={ this.state.success } />
               <SecretWord secretWord={ this.state.secretWord }
                           correctLetters={ this.state.correctLetters }
-                          checkResult={ this.checkResult }
                           gameOver={ this.state.gameOver } />
               <GuessForm getGuess={ this.getGuess }/>
             </div>

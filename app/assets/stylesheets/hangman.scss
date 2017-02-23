@@ -12,10 +12,13 @@ body {
   display: flex;
   flex-direction: column;
   width: 1024px;
+  align-items: center;
+  justify-content: center;
 }
 
 .main-container {
   display: flex;
+  justify-content: center;
 }
 
 .picture {
