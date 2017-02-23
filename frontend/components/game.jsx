@@ -211,7 +211,9 @@ class Game extends React.Component {
       correctLetters: [],
       guessedWords: [],
       secretWord: "secret",
-      success: false
+      success: false,
+      scores: "",
+      currentGuess: []
     });
     this.props.requestRandomWord().then(() => this.setSecretWord());
   }

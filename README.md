@@ -1,24 +1,7 @@
-# README
+# HANGMAN
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![hangman][hangman]
 
-Things you may want to cover:
+A version of Hangman made using React and Ruby on Rails.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[hangman]: ./hangman.png
