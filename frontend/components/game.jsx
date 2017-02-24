@@ -123,7 +123,6 @@ class Game extends React.Component {
   }
 
   checkGuess() {
-    console.log("checking guess");
     let currentGuessWord = this.state.currentGuess.join("");
     console.log(currentGuessWord);
     if (currentGuessWord === this.state.secretWord) {
@@ -154,7 +153,6 @@ class Game extends React.Component {
   }
 
   checkLastGuess(newGuess) {
-    console.log("check last guess");
     if (newGuess.length === 1) {
       if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
         console.log("You've already guessed this letter!");
@@ -191,7 +189,6 @@ class Game extends React.Component {
   }
 
   checkWord(newGuess) {
-    console.log("check Word");
     if (newGuess === this.state.secretWord) {
       this.setState({
         totalGuesses: this.state.totalGuesses + 1,
@@ -199,7 +196,6 @@ class Game extends React.Component {
         success: !this.state.success
       });
     } else {
-      console.log("Wrong guess");
       this.setState({
         totalGuesses: this.state.totalGuesses + 1,
         guessedWords: this.state.guessedWords.concat(newGuess),
@@ -220,8 +216,7 @@ class Game extends React.Component {
       success: false,
       scores: "",
       currentGuess: []
-    });
-    this.props.requestRandomWord().then(() => this.setSecretWord());
+    }, this.setRandomWord );
   }
 
   render() {
