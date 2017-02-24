@@ -4,19 +4,13 @@ class OptionsMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      newLevel: ""
-    };
-
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
     e.preventDefault();
-    this.setState({
-      newLevel: e.target.value
-    });
-    this.props.setLevel(this.state.newLevel);
+    console.log(e.target.value);
+    this.props.setLevel(e.target.value);
   }
 
   render() {

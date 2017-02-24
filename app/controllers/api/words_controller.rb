@@ -33,8 +33,7 @@ class Api::WordsController < ApplicationController
     @words = result.split("\n")
     @word = @words.sample
     @saved_word = Word.find_or_create_by(word: @word)
-    @scores = @saved_word.scores
-    @scores = @word.scores
+    @scores = @saved_word.scores.order('score')
     respond_to do |format|
       format.json {
         render :leveled, { word: @word, scores: @scores }
