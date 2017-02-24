@@ -44,6 +44,14 @@ class Game extends React.Component {
     this.setRandomWord();
   }
 
+  setRandomWord() {
+    this.props.requestRandomWord().then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
+  }
+
+  setLeveledWord() {
+    this.props.requestLeveledWord(this.state.level).then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
+  }
+
   setSecretWord() {
     let word = this.props.word.word.word;
     let scores = this.props.word.word.scores;
@@ -56,14 +64,6 @@ class Game extends React.Component {
     } else {
       return <div>No words</div>;
     }
-  }
-
-  setLeveledWord() {
-    this.props.requestLeveledWord(this.state.level).then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
-  }
-
-  setRandomWord() {
-    this.props.requestRandomWord().then(() => this.setSecretWord()).then(() => this.setCurrentGuess());
   }
 
   setCurrentGuess() {
@@ -122,6 +122,7 @@ class Game extends React.Component {
     console.log(newCurrentGuess);
   }
 
+  //checks if game is over
   checkGuess() {
     let currentGuessWord = this.state.currentGuess.join("");
     console.log(currentGuessWord);
@@ -141,8 +142,7 @@ class Game extends React.Component {
       this.setState({
         correctLetters: this.state.correctLetters.concat(newGuess),
         totalGuesses: this.state.totalGuesses + 1
-      });
-      this.updateCurrentGuess(newGuess);
+      }, this.updateCurrentGuess(newGuess));
     } else {
       this.setState({
         guessedLetters: this.state.guessedLetters.concat(newGuess),
