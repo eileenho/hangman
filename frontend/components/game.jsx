@@ -236,7 +236,8 @@ class Game extends React.Component {
               <SecretWord secretWord={ this.state.secretWord }
                           correctLetters={ this.state.correctLetters }
                           gameOver={ this.state.gameOver } />
-              <GuessForm getGuess={ this.getGuess }/>
+              <GuessForm getGuess={ this.getGuess }
+                         checkWord={ this.props.checkWord }/>
             </div>
           </div>
           <div className="side-bar-container">

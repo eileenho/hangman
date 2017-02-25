@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get 'api/words/random', to: 'api/words#random'
   get 'api/words/leveled/:level', to: 'api/words#leveled'
   get 'api/words/:word', to: 'api/words#show'
+  post 'api/words/checkWord', to: 'api/words#checkWord'
 end

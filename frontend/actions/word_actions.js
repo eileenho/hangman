@@ -29,6 +29,12 @@ export const createScore = newScore => dispatch => {
   });
 };
 
+export const checkWord = newWord => dispatch => {
+  return WordUtil.checkWord(newWord).then(word => {
+    dispatch(receiveWord(word));
+  });
+};
+
 export const receiveRandomWord = word => ({
   type: RECEIVE_RANDOM_WORD,
   word

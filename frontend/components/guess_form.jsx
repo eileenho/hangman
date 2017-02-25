@@ -26,6 +26,7 @@ class GuessForm extends React.Component {
       });
     }
   }
+  //this.props.checkWord(this.state.newGuess)
 
   handleOnChange(e) {
     e.preventDefault();

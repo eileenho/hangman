@@ -41,6 +41,16 @@ class Api::WordsController < ApplicationController
     end
   end
 
+  def checkWord
+    guessedWord = params[:word]
+    result = @word == guessedWord
+    respond_to do |format|
+      format.json {
+        render :checkWord, { gameOver: result }
+      }
+    end
+  end
+
   private
   def word_params
     params.require(:word).permit(:secretWord, :playerName, :score)
