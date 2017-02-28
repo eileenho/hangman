@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Game from './game';
-import { requestRandomWord, requestLeveledWord, createWord, checkWord } from '../actions/word_actions';
+import { requestRandomWord, requestLeveledWord, createWord, createGuess, checkWord,  } from '../actions/word_actions';
 import { createScore } from '../actions/score_actions';
 
 const mapStateToProps = state => ({
@@ -12,6 +12,7 @@ const mapDispatchToProps = dispatch => ({
   requestLeveledWord: level => dispatch(requestLeveledWord(level)),
   createWord: word => dispatch(createWord(word)),
   createScore: score => dispatch(createScore(score)),
+  createGuess: guess => dispatch(createGuess(guess)),
   checkWord: word => dispatch(checkWord(word))
 });
 

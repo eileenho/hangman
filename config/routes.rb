@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :words, only: [:create]
     resources :scores, only: [:create, :show]
+    resources :guesses, only: [:create, :show]
   end
 
   get 'api/words/random', to: 'api/words#random'

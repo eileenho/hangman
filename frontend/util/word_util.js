@@ -20,6 +20,14 @@ export const createWord = word => {
   });
 };
 
+export const getGuess = guess => {
+  return $.ajax({
+    method: 'POST',
+    url: 'api/guesses',
+    data: { guess }
+  });
+};
+
 export const checkWord = word => {
   return $.ajax({
     method: 'POST',

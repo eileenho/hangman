@@ -20,7 +20,7 @@ class GuessForm extends React.Component {
   handleInput(e) {
     e.preventDefault();
     if (this.state.newGuess.length > 0) {
-      this.props.getGuess(this.state.newGuess);
+      this.props.createGuess(this.state.newGuess);
       this.setState({
         newGuess: ""
       });

@@ -15,6 +15,7 @@ class Api::WordsController < ApplicationController
   end
 
   def random
+    set_game
     result = Net::HTTP.get(URI.parse('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words'))
     @words = result.split("\n")
     @word = @words.sample
@@ -29,13 +30,14 @@ class Api::WordsController < ApplicationController
   end
 
   def leveled
+    set_game
     level = params[:level]
     result = Net::HTTP.get(URI.parse("http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words?difficulty=#{level}"))
     @words = result.split("\n")
-    @word = @words.sample
-    @saved_word = Word.find_or_create_by(word: @word)
-    @scores = @saved_word.scores.order('score')
-    @length = @word.length
+    @secret_word = @words.sample
+    saved_word = Word.find_or_create_by(word: @word)
+    @scores = saved_word.scores.order('score')
+    @length = @secret_word.length
     respond_to do |format|
       format.json {
         render :leveled, { length: @length, scores: @scores }
