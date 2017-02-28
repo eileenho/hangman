@@ -27,10 +27,10 @@ class Game extends React.Component {
     };
 
     this.setSecretWord = this.setSecretWord.bind(this);
-    this.getGuess = this.getGuess.bind(this);
-    this.checkLetter = this.checkLetter.bind(this);
-    this.checkWord = this.checkWord.bind(this);
-    this.checkLastGuess = this.checkLastGuess.bind(this);
+    // this.getGuess = this.getGuess.bind(this);
+    // this.checkLetter = this.checkLetter.bind(this);
+    // this.checkWord = this.checkWord.bind(this);
+    // this.checkLastGuess = this.checkLastGuess.bind(this);
     this.gameReset = this.gameReset.bind(this);
     this.setLeveledWord = this.setLeveledWord.bind(this);
     this.setLevel = this.setLevel.bind(this);
@@ -87,19 +87,19 @@ class Game extends React.Component {
     }
   }
 
-  getGuess(newGuess) {
-    if (this.state.gameOver === false ) {
-      if (this.state.guessesRemaining > 1) {
-        if (newGuess.length === 1) {
-          this.checkLetter(newGuess);
-        } else {
-          this.checkWord(newGuess);
-        }
-      } else {
-        this.checkLastGuess(newGuess);
-      }
-    }
-  }
+  // getGuess(newGuess) {
+  //   if (this.state.gameOver === false ) {
+  //     if (this.state.guessesRemaining > 1) {
+  //       if (newGuess.length === 1) {
+  //         this.checkLetter(newGuess);
+  //       } else {
+  //         this.checkWord(newGuess);
+  //       }
+  //     } else {
+  //       this.checkLastGuess(newGuess);
+  //     }
+  //   }
+  // }
 
   updateCurrentGuess(letter) {
     let newCurrentGuess = [];
@@ -134,74 +134,74 @@ class Game extends React.Component {
     }
   }
 
-  checkLetter(newGuess) {
-    if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
-      console.log("You've already guessed this letter!");
-    } else if (this.state.secretWord.includes(newGuess)) {
-      this.setState({
-        correctLetters: this.state.correctLetters.concat(newGuess),
-        totalGuesses: this.state.totalGuesses + 1
-      }, this.updateCurrentGuess(newGuess));
-    } else {
-      this.setState({
-        guessedLetters: this.state.guessedLetters.concat(newGuess),
-        guessesRemaining: this.state.guessesRemaining - 1,
-        totalGuesses: this.state.totalGuesses + 1
-      });
-    }
-  }
+  // checkLetter(newGuess) {
+  //   if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
+  //     console.log("You've already guessed this letter!");
+  //   } else if (this.state.secretWord.includes(newGuess)) {
+  //     this.setState({
+  //       correctLetters: this.state.correctLetters.concat(newGuess),
+  //       totalGuesses: this.state.totalGuesses + 1
+  //     }, this.updateCurrentGuess(newGuess));
+  //   } else {
+  //     this.setState({
+  //       guessedLetters: this.state.guessedLetters.concat(newGuess),
+  //       guessesRemaining: this.state.guessesRemaining - 1,
+  //       totalGuesses: this.state.totalGuesses + 1
+  //     });
+  //   }
+  // }
 
-  checkLastGuess(newGuess) {
-    if (newGuess.length === 1) {
-      if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
-        console.log("You've already guessed this letter!");
-      } else if (this.state.secretWord.includes(newGuess)) {
-        this.setState({
-          correctLetters: this.state.correctLetters.concat(newGuess),
-          gameOver: !this.state.gameOver,
-          success: !this.state.success
-        });
-      } else {
-        this.setState({
-          guessedLetters: this.state.guessedLetters.concat(newGuess),
-          guessesRemaining: this.state.guessesRemaining - 1,
-          totalGuesses: this.state.totalGuesses + 1,
-          gameOver: !this.state.gameOver
-        });
-      }
-    } else {
-      if (newGuess === this.state.secretWord) {
-        this.setState({
-          totalGuesses: this.state.totalGuesses + 1,
-          gameOver: !this.state.gameOver,
-          success: !this.state.success
-        });
-      } else {
-        this.setState({
-          totalGuesses: this.state.totalGuesses + 1,
-          guessedWords: this.state.guessedWords.concat(newGuess),
-          guessesRemaining: this.state.guessesRemaining - 1,
-          gameOver: !this.state.gameOver
-        });
-      }
-    }
-  }
+  // checkLastGuess(newGuess) {
+  //   if (newGuess.length === 1) {
+  //     if (this.state.correctLetters.includes(newGuess) || this.state.guessedLetters.includes(newGuess)) {
+  //       console.log("You've already guessed this letter!");
+  //     } else if (this.state.secretWord.includes(newGuess)) {
+  //       this.setState({
+  //         correctLetters: this.state.correctLetters.concat(newGuess),
+  //         gameOver: !this.state.gameOver,
+  //         success: !this.state.success
+  //       });
+  //     } else {
+  //       this.setState({
+  //         guessedLetters: this.state.guessedLetters.concat(newGuess),
+  //         guessesRemaining: this.state.guessesRemaining - 1,
+  //         totalGuesses: this.state.totalGuesses + 1,
+  //         gameOver: !this.state.gameOver
+  //       });
+  //     }
+  //   } else {
+  //     if (newGuess === this.state.secretWord) {
+  //       this.setState({
+  //         totalGuesses: this.state.totalGuesses + 1,
+  //         gameOver: !this.state.gameOver,
+  //         success: !this.state.success
+  //       });
+  //     } else {
+  //       this.setState({
+  //         totalGuesses: this.state.totalGuesses + 1,
+  //         guessedWords: this.state.guessedWords.concat(newGuess),
+  //         guessesRemaining: this.state.guessesRemaining - 1,
+  //         gameOver: !this.state.gameOver
+  //       });
+  //     }
+  //   }
+  // }
 
-  checkWord(newGuess) {
-    if (newGuess === this.state.secretWord) {
-      this.setState({
-        totalGuesses: this.state.totalGuesses + 1,
-        gameOver: !this.state.gameOver,
-        success: !this.state.success
-      });
-    } else {
-      this.setState({
-        totalGuesses: this.state.totalGuesses + 1,
-        guessedWords: this.state.guessedWords.concat(newGuess),
-        guessesRemaining: this.state.guessesRemaining - 1
-      });
-    }
-  }
+  // checkWord(newGuess) {
+  //   if (newGuess === this.state.secretWord) {
+  //     this.setState({
+  //       totalGuesses: this.state.totalGuesses + 1,
+  //       gameOver: !this.state.gameOver,
+  //       success: !this.state.success
+  //     });
+  //   } else {
+  //     this.setState({
+  //       totalGuesses: this.state.totalGuesses + 1,
+  //       guessedWords: this.state.guessedWords.concat(newGuess),
+  //       guessesRemaining: this.state.guessesRemaining - 1
+  //     });
+  //   }
+  // }
 
   gameReset() {
     this.setState({
