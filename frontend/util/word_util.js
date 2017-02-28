@@ -20,14 +20,6 @@ export const createWord = word => {
   });
 };
 
-export const createScore = score => {
-  return $.ajax({
-    method: 'POST',
-    url: 'api/scores',
-    data: { score }
-  });
-};
-
 export const checkWord = word => {
   return $.ajax({
     method: 'POST',

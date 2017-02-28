@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import Game from './game';
-import { requestRandomWord, requestLeveledWord, createWord, createScore, checkWord } from '../actions/word_actions';
+import { requestRandomWord, requestLeveledWord, createWord, checkWord } from '../actions/word_actions';
+import { createScore } from '../actions/score_actions';
 
 const mapStateToProps = state => ({
   word: state.words
