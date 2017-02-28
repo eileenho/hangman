@@ -19,7 +19,7 @@ class Game extends React.Component {
       guessedLetters: [],
       correctLetters: [],
       guessedWords: [],
-      secretWord: "secret",
+      secretWordLength: 1,
       success: false,
       level: "random",
       scores: "",
@@ -53,12 +53,11 @@ class Game extends React.Component {
   }
 
   setSecretWord() {
-    let word = this.props.word.word.word;
+    let length = this.props.word.word.length;
     let scores = this.props.word.word.scores;
-    console.log(word);
-    if (word) {
+    if (length) {
       this.setState({
-        secretWord: word,
+        secretWordLength: length,
         scores: scores
       });
     } else {
@@ -68,7 +67,7 @@ class Game extends React.Component {
 
   setCurrentGuess() {
     let blankCurrentGuess = [];
-    for (let i = 0; i < this.state.secretWord.length; i++) {
+    for (let i = 0; i < this.state.secretWordLength; i++) {
       blankCurrentGuess.push("_");
     }
     this.setState({
@@ -233,7 +232,7 @@ class Game extends React.Component {
             <div className="picture-container">
               <Picture guessesRemaining={ this.state.guessesRemaining}
                        success={ this.state.success } />
-              <SecretWord secretWord={ this.state.secretWord }
+                     <SecretWord secretWordLength={ this.state.secretWordLength }
                           correctLetters={ this.state.correctLetters }
                           gameOver={ this.state.gameOver } />
               <GuessForm getGuess={ this.getGuess }

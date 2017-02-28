@@ -20,9 +20,10 @@ class Api::WordsController < ApplicationController
     @word = @words.sample
     @saved_word = Word.find_or_create_by(word: @word)
     @scores = @saved_word.scores.order('score')
+    @length = @word.length
     respond_to do |format|
       format.json {
-        render :random, { word: @word , scores: @scores}
+        render :random, { length: @length, scores: @scores }
       }
     end
   end
@@ -34,9 +35,10 @@ class Api::WordsController < ApplicationController
     @word = @words.sample
     @saved_word = Word.find_or_create_by(word: @word)
     @scores = @saved_word.scores.order('score')
+    @length = @word.length
     respond_to do |format|
       format.json {
-        render :leveled, { word: @word, scores: @scores }
+        render :leveled, { length: @length, scores: @scores }
       }
     end
   end
