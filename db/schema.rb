@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219092656) do
+ActiveRecord::Schema.define(version: 20170228195412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "guesses", force: :cascade do |t|
+    t.string "guess"
+  end
 
   create_table "scores", force: :cascade do |t|
     t.string   "player_name"

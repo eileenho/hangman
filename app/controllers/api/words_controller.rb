@@ -15,7 +15,6 @@ class Api::WordsController < ApplicationController
   end
 
   def random
-    set_game
     result = Net::HTTP.get(URI.parse('http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words'))
     @words = result.split("\n")
     @word = @words.sample
@@ -30,7 +29,6 @@ class Api::WordsController < ApplicationController
   end
 
   def leveled
-    set_game
     level = params[:level]
     result = Net::HTTP.get(URI.parse("http://linkedin-reach.hagbpyjegb.us-west-2.elasticbeanstalk.com/words?difficulty=#{level}"))
     @words = result.split("\n")

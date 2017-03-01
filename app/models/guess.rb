@@ -1,7 +1,19 @@
 class Guess < ApplicationRecord
-  attr_accessor :guess
 
-  def check_guess(guess)
+  attr_accessor :guess, :game_over, :missed_letters, :correct_letters, :guessed_words, :guesses_remaining, :total_guesses, :success
+
+  def initialize(guess)
+    @guess = guess
+    @game_over = false
+    @missed_letters = []
+    @correct_letters = []
+    @guessed_words = []
+    @guesses_remaining = 6
+    @total_guesses = 0
+    @success = false
+  end
+
+  def self.check_guess(guess)
     if @guesses_remaining > 1
       if guess.length == 1
         check_letter(guess)

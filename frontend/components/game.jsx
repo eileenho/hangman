@@ -118,7 +118,6 @@ class Game extends React.Component {
     this.setState({
       currentGuess: newCurrentGuess
     }, this.checkGuess);
-    console.log(newCurrentGuess);
   }
 
   //checks if game is over
